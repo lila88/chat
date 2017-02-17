@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat-LM</title>
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="style/bootstrap-grid.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+</head>
+<body>	
+	<header>
+		<div class="content-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-5 col-sm-5 col-md-3">
+						<div class="wrapper-time-prof">
+							<ul class="time-chat" id="time_chat">
+								<li id="time_online"></li>
+								<li id="clock"></li> 
+							</ul>
+							<ul class="profile">
+								<li><a href=""><span>Edit  personal info</span></a></li>
+								<li><a href=""><span>Private messages</span><span>(3)</span></a></li>
+							</ul>
+						</div>					
+					</div>
+					<div class="col-xs-7 col-sm-7 col-md-9">
+					<div class="logo"><img src="img/logo3.svg" alt="" width="100%" ></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="wrapper-chat" id="wrapper-chat">
+		<div class="container chat-content">
+			<div class="row ">	
+				<div class="col-xs-12 col-sm-4 col-md-3">
+					<div class="list-users">
+						<div class="amount-users">
+							<span>Online:</span>
+							<span id="count_User"></span>
+						</div>
+						<form action="" id="form">
+							<input type="text" id="enter_user" class="enter-name" placeholder="Enter your name">
+						</form>
+						<div class="present-users">
+							<ul class="list" id="list">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-9">
+					<div class="wrapper-messages">
+						<div class="tabs-widget" id="tabs_widget">
+							<ul class="tabs-button" id="tabs_button">
+								<li class='tab active' ><a onclick="activeTab(this.parentNode)"><span class="before"></span>&nbsp;&nbsp;<span class="main-chat " style="margin-left:10px;">Main chat</span></a></li>
+								<li class='tab' ><a onclick="activeTab(this.parentNode)"><span class="before"></span>&nbsp;&nbsp;<span class="person-chat" style="margin-left:10px;">Chat with Alison</span></a>&nbsp;&nbsp;<span>(2)</span>&nbsp;&nbsp;<span class="close" onclick="deleteTub()"">[x]</span></li>
+								<li class='tab' ><a onclick="activeTab(this.parentNode)"><span class="before"></span>&nbsp;&nbsp;<span class="person-chat" style="margin-left:10px;">Chat with Chack Noris</span></a>&nbsp;&nbsp;<span>(2)</span>&nbsp;&nbsp;<span class="close" onclick="deleteTub()">[x]</span></li>
+							</ul>							
+							<div class="target active" id="id1">
+								<p><span class="chat-user-name">John Snow :</span>&nbsp;&nbsp;<span class="chat-user-message">Hi, how is the weather there?</span></p>
+								<p><span class="chat-user-name">Andrew Simpson :</span>&nbsp;&nbsp;<span class="chat-user-message">It's snowy, temperature here is 10 degree below zero celsius.</span></p>
+								<p><span class="chat-user-name">Alison Black :</span>&nbsp;&nbsp;<span class="chat-user-message">Wuh, it seems winter has come indeed...</span></p>
+								<p><span class="chat-user-name">Nik Stoun :</span>&nbsp;&nbsp;<span class="chat-user-message">Agree, who is going to ski?</span></p>
+
+								<!-- <ul class="list-user-in-chat" id="listUsCh">
+									<li><a href=""><span class="chat-user-name">John Snow :</span></a>&nbsp;&nbsp;<span class="chat-user-message">Hi, how is the weather there?</span></li>
+									<li><a href=""><span class="chat-user-name">Andrew Simpson :</span></a>&nbsp;&nbsp;<span class="chat-user-message">It's snowy, temperature here is 10 degree below zero celsius.</span></li>
+									<li><a href=""><span class="chat-user-name">Alison Black :</span></a>&nbsp;&nbsp;<span class="chat-user-message">Wuh, it seems winter has come indeed...</span></li>
+									<li><a href=""><span class="chat-user-name">Nik Stoun :</span></a>&nbsp;&nbsp;<span class="chat-user-message">Agree, who is going to ski?</span></li>
+								</ul>  -->
+							</div>
+							<div class="target" id="id2">
+								<ul class="list-user-in-chat">
+									<li><a href=""><span class="chat-user-name">Alison Black :</span></a><span class="chat-user-message"> Hi! How are you?</span></li>
+								</ul>
+							</div>
+							<div class="target" id="id3">
+								<ul class="list-user-in-chat">
+									<li><a href=""><span class="chat-user-name">Chack Noris :</span></a><span class="chat-user-message"> Hi! How are you?</span></li>
+								</ul>
+							</div>
+						</div>
+						<form action="" method="get" name="form_comment" id="formUserMes">
+							<div class="message-user">
+								<textarea name="message" id="message" class="comment-user" rows="5"  placeholder="Enter your message"></textarea>
+								<!-- <input type='button' value='посчитать' onclick='alert(document.getElementById("message").value.length);' /> -->
+							</div>						
+							<div class="message-user-send">
+								<div class="row">
+									<div class="col-xs-12 col-sm-4 col-md-4 bottom">
+										<ul class="entered">
+											<li><span id="characters" class="fa-pencil-square"></span><span class="title-entered">characters entered</span></li>
+											<li><span id="letters" class="fa-file-word-o"></span><span class="title-entered">letters entered</span></li>
+											<li><span id="whitespase" class="fa-pencil-square-o"></span><span class="title-entered">whitespase</span></li>
+											<li><span id="punctuation" class="fa-thumb-tack"></span><span class="title-entered">punctuation marks entered</span></li>
+										</ul>
+									</div>
+									<div class="col-xs-12 col-sm-5 col-md-5 bottom">
+										<ul class="tag">
+											<li><a href="#"  onclick ="javascript:tag_add(message, '<b>', '</b>')"><span class="fa-bold"></span></a></li>
+											<li><a href="#" onclick ="javascript:tag_add(message, '<em>', '</em>')"><span class="fa-italic"></span></a></li>
+											<li><a href="#" onclick ="javascript:tag_add(message, '<u>', '</u>')"><span class="fa-underline"></span></a></li>
+											<li><a href="#" onclick ="javascript:tag_add(message, '<a href=\'#\'>', '</a>')">Link</a></li>
+										</ul>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3  bottom">
+										<input type="text" onclick="//addMessageUser()" id='sendmess' value="Send message">
+									</div>
+								</div>
+							</div>	
+						</form>							
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
