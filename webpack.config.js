@@ -13,7 +13,6 @@ const common = {
   entry: [
     './css/style.css',
     './js/index.js',
-    './img',
     './index.html'
   ],
   output: {
@@ -42,7 +41,7 @@ if (TARGET === 'start') {
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new HtmlWebpackPlugin({
-        template: './src/index.html'
+        template: './index.html'
       })
     ]
   });
@@ -54,7 +53,7 @@ if (TARGET === 'build') {
     plugins: [
       new ExtractTextPlugin('app.css'),
       new HtmlWebpackPlugin({
-        template: './src/index.html'
+        template: './index.html'
       }),
       new webpack.optimize.UglifyJsPlugin({
         compressor: {
