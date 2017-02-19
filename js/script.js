@@ -13,11 +13,17 @@ var users = {
 	users.data.forEach(
   function (obj) {
     var ul = document.getElementById('list');
-    ul.innerHTML += `<li class="${obj.status}"><a onclick="newTab(this.innerHTML)">${obj.name}</a> </li>`;   
+    var li = document.createElement('li');
+    li.setAttribute('class',obj.status);   
+    a = document.createElement('a');
+    a.innerHTML = obj.name;
+    li.appendChild(a);
+    ul.appendChild(li);
+    //ul.innerHTML += `<li class="${obj.status}"><a >${obj.name}</a> </li>`;   
 	  }
 )
-
 /*Добавить пользователя в список онлайн первый вариант*/
+
 /*Подсчет пользователей онлайн*/
 function countUser(string) {
 var count;
@@ -64,59 +70,80 @@ setInterval(clock, 1000);
 clock();
 /*Таймер и текущее вреня*/
 
+/*Добавление таба отдельному пользователю*/
+var listUserOnline = document.querySelectorAll('.Active');
+for (var i = 0; i < listUserOnline.length; i++) {  ////перебираем массив списка пользователей онлайн    
+      listUserOnline[i].addEventListener('click', function() { //и при нажатии на конкретного пользователя
+        alert(listUserOnline[i])
+       newTab(this);
+  })
+}
 
 };// window.onload = function() AND
 
-
 /*создание нового таба и таргета*/
-function newTab(name) {
-	    	//alert('После загрузки сайта пользователей онлайн    '+listUserOnline.length)
-	    	var li = list.getElementsByTagName('li');
-	    	for (var i = 0; i < li.length; i++) {
-	    		var id = [i];//alert(id)//найти по списку идентификатор li пользователя в онлайн и прикрепить к его табу и таргету 
-	    }
-	    	tabs_button.innerHTML+= '<li  class=\'tab \'><a hreff="#'+id+'" onclick="activeTab(this.parentNode)"><span class="before"></span>&nbsp;&nbsp;<span class="person-chat" style="margin-left:10px;">Chat with ...'+name+'</span></a><span class="close" onclick="deleteTub()">x</span></li>';    	
-	    	tabs_widget.innerHTML += '<div id="'+id+'" class="target "><span class="chat-user-name">' + name + '</span>&nbsp;:&nbsp;&nbsp;<span class="chat-user-message">HELLO!!!&nbsp;&nbsp;&nbsp;&nbsp;I\'m&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">'+name+'</span></div>';	
-        	
-     //	deleteTub();
-	    }
+function newTab(el) {
+ var listtab = document.getElementById('tabs_button');//получить список табов 
+        var newtab = document.createElement('li');  //  создать  новый таб
+        newtab.setAttribute('class','tab'); //   задать ей класс 
+        icon =  document.createElement('span');
+        icon.setAttribute('class','before'); //   задать ей класс 
+        nam =  document.createElement('span');
+        nam.setAttribute('class','person-chat');
+        nam.innerHTML = el;
+        nameUser =  document.createElement('a');
+        nameUser.insertBefore(icon, nameUser.firstChild);
+        nameUser.appendChild(nam);
+        closeTab =  document.createElement('span');
+        closeTab.setAttribute('class','close'); //   задать ей класс 
+        closeTab.innerHTML = 'x'
+        newtab.insertBefore(nameUser, newtab.firstChild);
+        newtab.appendChild(closeTab);
+        listtab.appendChild(newtab);//вставить ее в список кнопок табов
 
-/*создание нового таба и таргета*/
-function deleteTub(){
+        var tabWigets = document.querySelectorAll('.target');//получить массив табов
+        var newtabarea = document.createElement('div');  //  создать новый таб
+        newtabarea.setAttribute('class','target');//  задать ему класс      
+        tabs_widget.appendChild(newtabarea);//вставить его в div-родитель табов
 
-	var activeTab = tabs_button.getElementsByClassName('active');
-  //var acntiveTarg = tabs_widget.getElementsByClassName('active');
-for (var i = 0; i < activeTab.length; i++) {
-	activeTab[i].parentNode.removeChild(activeTab[i]);
-}
-for (var i = 0; i < acntiveTarg.length; i++) {
-	acntiveTarg[i].parentNode.removeChild();
-} }				 
+        var tabs = document.querySelectorAll('.tab');//получить массив кнопок с классом tab
+        var con = document.querySelectorAll('.target');//получить массив табов с классом target
+        for (var i = 0; i < tabs.length; i++) {//перебрать массив кнопок
+          tabs[i].addEventListener('click', function(e) {  // и при нажатии на кнопку
+            for (var k = 0; k < tabs.length; k++) {//перебрать массив
+              if (this == tabs[k]) {//
+                con[k].classList.add('active');//добавить класс активного
+                tabs[k].classList.add('active');//добавить класс активного
+              } 
+              else {
+                con[k].classList.remove('active');//удалить класс активного
+                tabs[k].classList.remove('active');//удалить класс активного
+          }
+        }
+      })
+    }
 
-/* TABS Добавление табам класса  активности*/
-
-function activeTab(el){				
-						var tabs = document.querySelectorAll('.tab');//получить массив кнопок с классом tab
-				 var con = document.querySelectorAll('.target');//получить массив табов с классом target
-						 for (var i = 0; i < tabs.length; i++) {//перебрать массив
-                  if (el == tabs[i]) {//
-                    con[i].classList.add('active');//добавить класс активного
-                    tabs[i].classList.add('active');//добавить класс активного
-                  } 
-                  else {
-                    con[i].classList.remove('active');//удалить класс активного
-                    tabs[i].classList.remove('active');//удалить класс активного
+    var close = document.querySelectorAll('.close');
+    var target_ = document.getElementsByClassName('target');
+    var target_act = tabs_widget.getElementsByClassName('target');
+for (var i = 0; i < close.length; i++) {//перебрать массив кнопок
+              close[i].addEventListener('click', function(e) {                                    
+                 for (var j = 0; j <  target_act.length; j++) {
+                  //alert(target_act.length)
+                  if (target_act[i].className=='target'){
+                   target_act[i].classList.add('active');
+                 }
+                  else{
+                    target_act[j].classList.remove('active');
                   }
-                }
-						   
-						
-					}
-/* TABS Добавление табам класса  активности*/	
+                 }
+                 
+                 //target.parentNode.removeChild(target);
+                 
+               })
+            }
 
-
-
-
-
+}
 
 
 /*Подсчет и вывод вводимых знаков в поле для СМС */

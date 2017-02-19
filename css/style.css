@@ -267,7 +267,7 @@ header .content-header .wrapper-time-prof .profile li a:hover {
 /* line 185, ../sass/style.scss */
 .wrapper-chat .chat-content .wrapper-messages .tabs-widget ul.tabs-button li span.before:before {
   position: absolute;
-  top: 10px;
+  top: -5px;
   margin-right: 18px;
   content: "\f0e6";
   font-style: normal;
@@ -506,4 +506,8 @@ footer .footer-content {
 }
 .close:hover{  
   color: red;  
+}
+.person-chat{
+  margin-left: 20px;
+  margin-right: 20px;
 }
