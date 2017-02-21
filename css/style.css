@@ -172,7 +172,7 @@ header .content-header .wrapper-time-prof .profile li a:hover {
 /* line 106, ../sass/style.scss */
 .wrapper-chat .chat-content .list-users .present-users ul li.Active:hover a {
  color:#fd642f;
- font-size: 17px;
+ //font-size: 17px;
 }
 .wrapper-chat .chat-content .list-users .present-users ul li.Active:hover:before {
  color:#fd642f;
@@ -186,8 +186,7 @@ header .content-header .wrapper-time-prof .profile li a:hover {
    cursor: pointer;
 }
 .wrapper-chat .chat-content .list-users .present-users ul li.Active:hover  {
-   padding: 0;
-  
+   //padding: 0;  
 }
 /* line 114, ../sass/style.scss */
 .wrapper-chat .chat-content .list-users .present-users ul li.Active:before {
