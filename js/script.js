@@ -19,7 +19,7 @@ var users = {
     a.innerHTML = obj.name;
     li.appendChild(a);
     ul.appendChild(li);
-    //ul.innerHTML += `<li class="${obj.status}"><a >${obj.name}</a> </li>`;   
+    //ul.innerHTML += `<li class="${obj.status}"><a >${obj.name}</a> </li>`; 
 	  }
 )
 /*Добавить пользователя в список онлайн первый вариант*/
@@ -73,11 +73,12 @@ clock();
 /*Добавление таба отдельному пользователю*/
 var listUserOnline = document.querySelectorAll('.Active');
 for (var i = 0; i < listUserOnline.length; i++) {  ////перебираем массив списка пользователей онлайн    
-      listUserOnline[i].addEventListener('click', function() { //и при нажатии на конкретного пользователя
-        alert(listUserOnline[i])
-       newTab(this);
+      listUserOnline[i].addEventListener('click', function(e) { //и при нажатии на конкретного пользователя
+        //alert(listUserOnline[i])
+       newTab(this.textContent);
   })
 }
+
 
 };// window.onload = function() AND
 
@@ -96,7 +97,7 @@ function newTab(el) {
         nameUser.appendChild(nam);
         closeTab =  document.createElement('span');
         closeTab.setAttribute('class','close'); //   задать ей класс 
-        closeTab.innerHTML = 'x'
+        //closeTab.innerHTML = '<i class="fa fa-times-circle" aria-hidden="true"></i>'
         newtab.insertBefore(nameUser, newtab.firstChild);
         newtab.appendChild(closeTab);
         listtab.appendChild(newtab);//вставить ее в список кнопок табов
@@ -107,44 +108,52 @@ function newTab(el) {
         tabs_widget.appendChild(newtabarea);//вставить его в div-родитель табов
 
         var tabs = document.querySelectorAll('.tab');//получить массив кнопок с классом tab
-        var con = document.querySelectorAll('.target');//получить массив табов с классом target
+        //var con = document.querySelectorAll('.target');//получить массив табов с классом target
         for (var i = 0; i < tabs.length; i++) {//перебрать массив кнопок
           tabs[i].addEventListener('click', function(e) {  // и при нажатии на кнопку
-            for (var k = 0; k < tabs.length; k++) {//перебрать массив
-              if (this == tabs[k]) {//
-                con[k].classList.add('active');//добавить класс активного
-                tabs[k].classList.add('active');//добавить класс активного
-              } 
-              else {
-                con[k].classList.remove('active');//удалить класс активного
-                tabs[k].classList.remove('active');//удалить класс активного
-          }
+            selectActiveTab(this);
+            })            
+         }
+         var close = document.querySelectorAll('.close');
+        for (var i = 0; i < close.length; i++) {
+          close[i].addEventListener('click', function(e) {  // и при нажатии на кнопку
+            deleteTab(this.parentNode);
+            })  
         }
-      })
-    }
-
-    var close = document.querySelectorAll('.close');
-    var target_ = document.getElementsByClassName('target');
-    var target_act = tabs_widget.getElementsByClassName('target');
-for (var i = 0; i < close.length; i++) {//перебрать массив кнопок
-              close[i].addEventListener('click', function(e) {                                    
-                 for (var j = 0; j <  target_act.length; j++) {
-                  //alert(target_act.length)
-                  if (target_act[i].className=='target'){
-                   target_act[i].classList.add('active');
-                 }
-                  else{
-                    target_act[j].classList.remove('active');
-                  }
-                 }
-                 
-                 //target.parentNode.removeChild(target);
-                 
-               })
-            }
-
+        
 }
-
+/*переключение вкладок*/
+function selectActiveTab(el) {
+  var tabs = document.querySelectorAll('.tab');
+  var targ = document.querySelectorAll('.target');
+  for (var i = 0; i < tabs.length; i++) {
+    if (el == tabs[i]) {
+      targ[i].classList.add('active');
+      tabs[i].classList.add('active');
+    } else {
+      targ[i].classList.remove('active');
+      tabs[i].classList.remove('active');
+    }
+  }
+  
+}
+function deleteTab(el) {
+  var tabs = document.querySelectorAll('.tab');
+  var targ = document.querySelectorAll('.target');
+  for (var i = 0; i < tabs.length; i++) {
+    if (el == tabs[i]) {
+      if(tabs[i].classList.contains('active')){
+        //alert(targ[0].textContent);alert(tabs[i].classList);
+       
+        targ[0].classList.add("active");
+        tabs[0].classList.add("active");  
+              
+      }
+       tabs[i].parentNode.removeChild(tabs[i]);
+       targ[i].parentNode.removeChild(targ[i]);      
+    }
+  }
+}
 
 /*Подсчет и вывод вводимых знаков в поле для СМС */
 function counter(string, reg) {
