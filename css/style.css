@@ -86,8 +86,9 @@ body {
 
 /* line 32, ../sass/style.scss */
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 5px;
   background: #eee;
+  cursor: pointer;
 }
 
 /* line 36, ../sass/style.scss */
@@ -164,32 +165,34 @@ header .content-header .wrapper-time-prof .profile li a:hover {
 .wrapper-chat .chat-content .list-users .present-users {
   background-color: #ffffff;
   height: 55vh;
-  padding-right: 10px;
-  padding-left: 10px;
+  //padding-right: 10px;
+  //padding-left: 10px;
+  border: 10px solid #fff;
+  border-right: none;
   overflow: scroll;
   overflow-x: hidden;
 }
 /* line 106, ../sass/style.scss */
-.wrapper-chat .chat-content .list-users .present-users ul li.Active:hover a {
+.wrapper-chat .chat-content .list-users .present-users ul li.active:hover a {
  color:#fd642f;
  //font-size: 17px;
 }
-.wrapper-chat .chat-content .list-users .present-users ul li.Active:hover:before {
+.wrapper-chat .chat-content .list-users .present-users ul li.active:hover:before {
  color:#fd642f;
 }
 /* line 108, ../sass/style.scss */
-.wrapper-chat .chat-content .list-users .present-users ul li.Active  {
+.wrapper-chat .chat-content .list-users .present-users ul li.active  {
   color: #337ab7;
   font-size: 16px;
   margin-left: 10px;
    padding: 7px 0;
    cursor: pointer;
 }
-.wrapper-chat .chat-content .list-users .present-users ul li.Active:hover  {
+.wrapper-chat .chat-content .list-users .present-users ul li.active:hover  {
    //padding: 0;  
 }
 /* line 114, ../sass/style.scss */
-.wrapper-chat .chat-content .list-users .present-users ul li.Active:before {
+.wrapper-chat .chat-content .list-users .present-users ul li.active:before {
   content: "\f007";
   font-style: normal;
   font-weight: normal;
@@ -199,15 +202,19 @@ header .content-header .wrapper-time-prof .profile li a:hover {
   padding-right: 10px;
 }
 /* line 123, ../sass/style.scss */
-.wrapper-chat .chat-content .list-users .present-users ul li.Suspended  {
+.wrapper-chat .chat-content .list-users .present-users ul li.away  {
   color: #988177;
+  font-size: 16px;
+  margin-left: 10px;
+  padding: 7px 0;
+  cursor: pointer;
 }
 /* line 126, ../sass/style.scss */
-.wrapper-chat .chat-content .list-users .present-users ul li.Suspended .fa {
+.wrapper-chat .chat-content .list-users .present-users ul li.away .fa {
   display: none;
 }
 /* line 130, ../sass/style.scss */
-.wrapper-chat .chat-content .list-users .present-users ul li.Suspended:before {
+.wrapper-chat .chat-content .list-users .present-users ul li.away:before {
   content: "\f00d";
   font-style: normal;
   font-weight: normal;
@@ -320,12 +327,21 @@ header .content-header .wrapper-time-prof .profile li a:hover {
 .wrapper-chat .chat-content .wrapper-messages .tabs-widget .target.active {
   display: block;
   height: 45vh;
-  overflow: scroll;
-  overflow-x: hidden;
-  padding: 15px;
+  //overflow: scroll;
+  //overflow-x: hidden;  
   background: #ffffff;
   border: 1px solid #fd642f;
 }
+.wrapper-chat .chat-content .wrapper-messages .tabs-widget .target .targetBorder{
+  display: block;
+  height: 44vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  border: 20px solid #fff;
+  border-right:none;
+  background: #ffffff;
+  padding-right: 20px;
+  }
 .wrapper-chat .chat-content .wrapper-messages .tabs-widget .target {
  display: none;
 }
@@ -494,13 +510,13 @@ footer .footer-content {
 }
 
 .enter-name{
-	width: 100%; 
+	width: 69%; 
 	margin-bottom: 10px;
 	padding:5px 10px; 
 	border:1px solid #fff;
 }
 .submit-name{
-  width: 30%; 
+  width:29%; 
   margin-bottom: 10px;
   padding:5px 10px; 
   border:1px solid #fff;
@@ -528,4 +544,12 @@ span.close:hover:before{
 .person-chat{
   margin-left: 20px;
   margin-right: 20px;
+}
+.error{
+  color:#f76904;
+  font-size: 20px;
+  text-align: center;
+  padding:5px 0;
+  border: 1px solid #f76904;
+  margin: 5px 0;
 }

@@ -11,8 +11,14 @@
 	<header>
 		<div class="content-header">
 			<div class="container">
+			<div class="row">
+  
+</div>
 				<div class="row">
-					<div class="col-xs-5 col-sm-5 col-md-3">
+				<div class="col-sm-8 col-sm-push-4">
+					<div class="logo"><img src="img/logo3.svg" alt="" width="100%" ></div>
+					</div>
+					<div class="col-sm-4 col-sm-pull-8">
 						<div class="wrapper-time-prof">
 							<ul class="time-chat" id="time_chat">
 								<li id="time_online"></li>
@@ -24,9 +30,7 @@
 							</ul>
 						</div>					
 					</div>
-					<div class="col-xs-7 col-sm-7 col-md-9">
-					<div class="logo"><img src="img/logo3.svg" alt="" width="100%" ></div>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -36,12 +40,13 @@
 			<div class="row ">	
 				<div class="col-xs-12 col-sm-4 col-md-3">
 					<div class="list-users">
-						<div class="amount-users">
+						<div id="amountUsers" class="amount-users">
 							<span>Online:</span>
-							<span id="count_User"></span>
+							<span id="countUser"></span>
 						</div>
 						<form action="" id="form">
 							<input type="text" id="enter_user" class="enter-name" placeholder="Enter your name">
+							<input type="button" id="enteruserId" class="submit-name" value="OK">
 						</form>
 						<div class="present-users">
 							<ul class="list" id="list">
@@ -50,24 +55,25 @@
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<div class="wrapper-messages">
+					<div id="wrapperMessages" class="wrapper-messages">
 						<div class="tabs-widget" id="tabs_widget">
 							<ul class="tabs-button" id="tabs_button">
-								<li class='tab active' ><a><span class="before"></span>&nbsp;&nbsp;<span class="main-chat " style="margin-left:10px;">Main chat</span></a></li>
-								
+								<li class='tab active' id="mainTab" ><a><span class="before"></span>&nbsp;&nbsp;<span class="main-chat " style="margin-left:10px;">Main chat</span></a></li>			
 							</ul>							
-							<div class="target active" id="id1">
-								<p><span class="chat-user-name">John Snow :</span>&nbsp;&nbsp;<span class="chat-user-message">Hi, how is the weather there?</span></p>
-								<p><span class="chat-user-name">Andrew Simpson :</span>&nbsp;&nbsp;<span class="chat-user-message">It's snowy, temperature here is 10 degree below zero celsius.</span></p>
-								<p><span class="chat-user-name">Alison Black :</span>&nbsp;&nbsp;<span class="chat-user-message">Wuh, it seems winter has come indeed...</span></p>
-								<p><span class="chat-user-name">Nik Stoun :</span>&nbsp;&nbsp;<span class="chat-user-message">Agree, who is going to ski?</span></p>
+							<div class="target active" id="target">
+								<div class="targetBorder">
+									<div id="inside" class="inside">
 
-								
-							</div>
-					
+									</div>
+								</div>
+								<!-- <p><span class="chat-user-name">John Snow :</span>&nbsp;&nbsp;<span class="chat-user-message">Hi, how is the weather there?</span></p>
+															<p><span class="chat-user-name">Andrew Simpson :</span>&nbsp;&nbsp;<span class="chat-user-message">It's snowy, temperature here is 10 degree below zero celsius.</span></p>
+															<p><span class="chat-user-name">Alison Black :</span>&nbsp;&nbsp;<span class="chat-user-message">Wuh, it seems winter has come indeed...</span></p>
+															<p><span class="chat-user-name">Nik Stoun :</span>&nbsp;&nbsp;<span class="chat-user-message">Agree, who is going to ski?</span></p>	 -->							
+							</div>					
 						</div>
-						<form action="" method="get" name="form_comment" id="formUserMes">
-							<div class="message-user">
+						<form action="" method="post" name="form_comment" id="formUserMes">
+							<div id="messageUser" class="message-user">
 								<textarea name="message" id="message" class="comment-user" rows="4"  placeholder="Enter your message"></textarea>
 								<!-- <input type='button' value='посчитать' onclick='alert(document.getElementById("message").value.length);' /> -->
 							</div>						
@@ -83,10 +89,10 @@
 									</div>
 									<div class="col-xs-12 col-sm-5 col-md-5 bottom">
 										<ul class="tag">
-											<li><a href="#"  onclick ="javascript:tag_add(message, '<b>', '</b>')"><span class="fa-bold"></span></a></li>
-											<li><a href="#" onclick ="javascript:tag_add(message, '<em>', '</em>')"><span class="fa-italic"></span></a></li>
-											<li><a href="#" onclick ="javascript:tag_add(message, '<u>', '</u>')"><span class="fa-underline"></span></a></li>
-											<li><a href="#" onclick ="javascript:tag_add(message, '<a href=\'#\'>', '</a>')">Link</a></li>
+											<li><a id="bold" href="#"><span class="fa-bold"></span></a></li>
+											<li><a id="italic" href="#"><span class="fa-italic"></span></a></li>
+											<li><a id="underline" href="#"><span class="fa-underline"></span></a></li>
+											<li><a id="link" href="#">Link</a></li>
 										</ul>
 									</div>
 									<div class="col-xs-12 col-sm-3 col-md-3  bottom">
